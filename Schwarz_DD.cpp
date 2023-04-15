@@ -1,25 +1,3 @@
-/*
-The MIT License (MIT)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-*/
-
 class Schwarz_DD {
 
     Jacobi j;
@@ -34,6 +12,8 @@ class Schwarz_DD {
             gs = gauss_seidel; 
         }
 
+
+        // Algebraic Block Jacobi Additive Schwarz Method
         int ABJASM(double *X,
                     double TOL,
                     int max_iterations,
@@ -106,7 +86,7 @@ class Schwarz_DD {
             }
 
 
-
+            // Matrix Block Jacobi Additive Schwarz Method
             int MBJASM(
                     double *X,
                     double TOL,
@@ -175,7 +155,7 @@ class Schwarz_DD {
             }
 
 
-
+            // Matrix Block Jacobi Restricted Additive Schwarz Method
             int MBJRASM(
                     double *X,
                     double TOL,
@@ -256,6 +236,7 @@ class Schwarz_DD {
 
             }
 
+            // Algebraic Additive Schwarz residual calculation.
             double* AAS_Residual_Calc(double* INV, double* F, int N, int vector_begin_index, int W, int subdomain_index, double residual_component) {
                 double *V = create_vector(N);
                 initialize_vector(V, 0.0, N);
