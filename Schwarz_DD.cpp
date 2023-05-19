@@ -113,7 +113,7 @@ class Schwarz_DD {
                             For tridiagonal matrices.
                             */
 
-                            gs.gauss_seidel_serial_ASM(X, F, A, TOL, 1000, N, i*block_size, block_size*(i+1), THREAD_COUNT-1, i, {old_X[block_size * i - 1 ] * -1.0, old_X[block_size*(i+1)] * -1.0});
+                            gs.gauss_seidel_serial_ASM(X, F, A, TOL, max_iterations, N, i*block_size, block_size*(i+1), THREAD_COUNT-1, i, {old_X[block_size * i - 1 ] * -1.0, old_X[block_size*(i+1)] * -1.0});
 
 
                         }
@@ -123,20 +123,20 @@ class Schwarz_DD {
                             */
 
                             //gs.gauss_seidel_serial_ASM(X, F, A, TOL, max_iterations, N, block_size, block_size*2, 1, old_X[block_size * i - 1 ] * -1.0);
-                            //printf("\n%d %d", iteration, gs.gauss_seidel_serial_ASM(X, F, A, TOL, max_iterations, N, i*block_size, block_size*(i+1), THREAD_COUNT-1, i, {old_X[block_size * i - 1 ] * -1.0, 0.0}));
-                            gs.gauss_seidel_serial_ASM(X, F, A, TOL, 1000, N, i*block_size, block_size*(i+1), THREAD_COUNT-1, i, {old_X[block_size * i - 1 ] * -1.0, 0.0});
+                            printf("\n%d %d", iteration, gs.gauss_seidel_serial_ASM(X, F, A, TOL, max_iterations, N, i*block_size, block_size*(i+1), THREAD_COUNT-1, i, {old_X[block_size * i - 1 ] * -1.0, 0.0}));
+                            //gs.gauss_seidel_serial_ASM(X, F, A, TOL, max_iterations, N, i*block_size, block_size*(i+1), THREAD_COUNT-1, i, {old_X[block_size * i - 1 ] * -1.0, 0.0});
 
                         } else {
                             /*
                             For tridiagonal matrices.
                             */
 
-                            //printf("\n%d %d", iteration, gs.gauss_seidel_serial_ASM(X, F, A, TOL, max_iterations, N, 0, block_size, THREAD_COUNT-1, i, {0.0, old_X[block_size*(i+1)] * -1.0}));
-                            gs.gauss_seidel_serial_ASM(X, F, A, TOL, max_iterations, N, 0, block_size, THREAD_COUNT-1, i, {0.0, old_X[block_size*(i+1)] * -1.0});
+                            printf("\n%d %d", iteration, gs.gauss_seidel_serial_ASM(X, F, A, TOL, max_iterations, N, 0, block_size, THREAD_COUNT-1, i, {0.0, old_X[block_size*(i+1)] * -1.0}));
+                            //gs.gauss_seidel_serial_ASM(X, F, A, TOL, max_iterations, N, 0, block_size, THREAD_COUNT-1, i, {0.0, old_X[block_size*(i+1)] * -1.0});
 
                         }
 
-                        for(int j=0; j<N; j++) {
+                        for(int j=i*block_size; j<block_size*(i+1); j++) {
                             local_errors[j] = fabs(X[j] - old_X[j]);
                         }
                     }
