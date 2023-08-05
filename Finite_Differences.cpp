@@ -31,7 +31,7 @@ class Finite_Differences {
             return A;
         }
 
-        // Arange the the x points from a starting point to an end point by a step.
+        // Arange the x points from a starting point to an end point by a step.
         std::vector<double> arange(double start, double end, double step) {
             std::vector<double> x_points;
             for(double s=start; s<end; s+=step) {

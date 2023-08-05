@@ -182,7 +182,7 @@ class Schwarz_DD {
                             For tridiagonal matrices.
                             */
 
-                            gs.gauss_seidel_serial_ASM(X, F, A, TOL, 1000, N, 
+                            gs.gauss_seidel_serial_ASM(X, F, A, TOL, max_iterations, N, 
                                                         DDBounds[i][0], 
                                                         DDBounds[i][1] + 1, 
                                                         THREAD_COUNT-1, 

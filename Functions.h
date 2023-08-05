@@ -6,9 +6,15 @@ void print_vector(const char* s, double *V, int N);
 
 void initialize_matrix(double *A, double value, int N);
 
+double* create_matrix(int cols, int rows);
+
+double* create_3D_matrix(int cols, int rows, int number_of_blocks);
+
 void print_matrix(const char* s, double *A, int rows, int cols);
 
 double* copy_vector(double *A, int N);
+
+double* copy_subvector(double *X, int start, int end);
 
 int write_vector_to_file(const char* filename, double* V, int N);
 
@@ -29,5 +35,8 @@ double* add(double* A, double* B, int N);
 double* slice(double *V, int start, int end);
 
 void inv(double* A, int order);
+
+
+double** create_sliced_vectors(double* F, int block_size, const int THREAD_COUNT);
 
 

@@ -279,7 +279,7 @@ double* slice(double *V, int start, int end) {
 }
 
 
-double** create_sliced_vectors(double* F, int block_size, const int THREAD_COUNT) {
+double** create_sliced_vectors(double* F, int block_size, const int THREAD_COUNT) {    
     double** sliced_vectors = new double *[THREAD_COUNT];
     for(int row=0; row<THREAD_COUNT; row++) sliced_vectors[row] = new double[block_size];
 

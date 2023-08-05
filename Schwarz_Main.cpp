@@ -12,7 +12,7 @@
 #include "Schwarz_DD.cpp"
 #include "Finite_Differences.cpp"
 
-#define THREAD_COUNT 5
+#define THREAD_COUNT 4
 
 int N;
 
@@ -52,9 +52,12 @@ int main(void) {
     printf("h: %lf\n",h);
 
 
+
     int DDBounds[THREAD_COUNT][2] = {
-        {0,1290},
-        {1230,2559},
+        {0,630},
+        {640,1280},
+        {1260,2000},
+        {1980,2559},
     };
 
 
@@ -104,8 +107,8 @@ int main(void) {
 
     // Swartz Methods
     //int iterations = schwarz_dd.ABJASM(X, TOL, max_iterations, N-2, THREAD_COUNT, block_size, A_Blocks, inv_main_block, F);
-    int iterations = schwarz_dd.MBJASM(X, TOL, max_iterations, N-2, THREAD_COUNT, block_size, A, F);
-    //int iterations = schwarz_dd.MBJRASM(X, TOL, max_iterations, N-2, THREAD_COUNT, DDBounds, A, F);
+    //int iterations = schwarz_dd.MBJASM(X, TOL, max_iterations, N-2, THREAD_COUNT, block_size, A, F);
+    int iterations = schwarz_dd.MBJRASM(X, TOL, max_iterations, N-2, THREAD_COUNT, DDBounds, A, F);
     
     auto t_end = std::chrono::steady_clock::now();  // End timer
 
